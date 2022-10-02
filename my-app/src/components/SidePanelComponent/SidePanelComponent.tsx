@@ -1,11 +1,12 @@
 import React from 'react';
 import './SidePanelComponent.scss';
 import {AppBar, Box, CssBaseline, Drawer, List, ListItem, ListItemButton, ListItemText, Toolbar, Typography} from "@mui/material";
-import {Link} from "react-router-dom";
+import {Link, Route, Routes} from "react-router-dom";
+import ProductsComponent from "../ProductsComponent/ProductsComponent";
 
 class SidePanelComponent extends React.Component {
 
-  private drawerWidth: number = 240;
+  private drawerWidth: number = 160;
   private mobileOpen: boolean = false;
 
   handleDrawerToggle() {
@@ -20,7 +21,7 @@ class SidePanelComponent extends React.Component {
             <Toolbar>
               <Typography variant="h6" noWrap component="div">
                 <Link to="/" className="link">
-                  Shop admin
+                  Shop admin panel
                 </Link>
               </Typography>
             </Toolbar>
@@ -50,6 +51,14 @@ class SidePanelComponent extends React.Component {
           </Drawer>
           <Box component="main" sx={{flexGrow: 1, p: 3}}>
             <Toolbar/>
+            <Routes>
+              <Route path="/products" element={<ProductsComponent/>}>
+              </Route>
+              {/*  {routes.map((route) => (*/}
+              {/*      <Route key={route.path} path={route.path} element={route.component}>*/}
+              {/*      </Route>*/}
+              {/*  ))}*/}
+            </Routes>
           </Box>
         </Box>
     )

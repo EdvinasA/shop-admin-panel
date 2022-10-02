@@ -12,14 +12,6 @@ class App extends React.Component {
         <BrowserRouter>
           <div className="App">
             <SidePanelComponent></SidePanelComponent>
-            <Routes>
-              <Route path="/products" element={<ProductsComponent/>}>
-              </Route>
-            {/*  {routes.map((route) => (*/}
-            {/*      <Route key={route.path} path={route.path} element={route.component}>*/}
-            {/*      </Route>*/}
-            {/*  ))}*/}
-            </Routes>
           </div>
         </BrowserRouter>
     );
