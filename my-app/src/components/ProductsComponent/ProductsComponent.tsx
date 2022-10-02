@@ -50,18 +50,20 @@ class ProductsComponent extends React.Component {
 
   constructor(props: any) {
     super(props);
-    this.state = {
-      products: [],
-    }
+    this.getData().then(r => r);
   }
 
   componentDidMount() {
-    fetchProductsList().then(
-        (response) => {
-          if (response !== undefined) {
-            this.products = response.data
-          }
-        });
+    console.log(this.products);
+  }
+
+  async getData() {
+    fetchProductsList().then(data => {
+      if (data !== undefined) {
+        this.products = data.data;
+        console.log(this.products);
+      }
+    });
   }
 
   render() {
@@ -71,8 +73,8 @@ class ProductsComponent extends React.Component {
               <DataGrid
                   rows={this.products.content}
                   columns={this.columns}
-                  pageSize={5}
-                  rowsPerPageOptions={[5]}
+                  pageSize={this.products.size}
+                  rowsPerPageOptions={[this.products.size]}
                   checkboxSelection
                   disableSelectionOnClick
               />
