@@ -1,6 +1,7 @@
 import React from 'react';
 import './SidePanelComponent.scss';
 import {AppBar, Box, CssBaseline, Drawer, List, ListItem, ListItemButton, ListItemText, Toolbar, Typography} from "@mui/material";
+import {Link} from "react-router-dom";
 
 class SidePanelComponent extends React.Component {
 
@@ -13,12 +14,14 @@ class SidePanelComponent extends React.Component {
 
   render() {
     return (
-        <Box sx={{ display: 'flex' }}>
-          <CssBaseline />
-          <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+        <Box sx={{display: 'flex'}}>
+          <CssBaseline/>
+          <AppBar position="fixed" sx={{zIndex: (theme) => theme.zIndex.drawer + 1}}>
             <Toolbar>
               <Typography variant="h6" noWrap component="div">
-                Shop admin
+                <Link to="/" className="link">
+                  Shop admin
+                </Link>
               </Typography>
             </Toolbar>
           </AppBar>
@@ -27,28 +30,30 @@ class SidePanelComponent extends React.Component {
               sx={{
                 width: this.drawerWidth,
                 flexShrink: 0,
-                [`& .MuiDrawer-paper`]: { width: this.drawerWidth, boxSizing: 'border-box' },
+                [`& .MuiDrawer-paper`]: {width: this.drawerWidth, boxSizing: 'border-box'},
               }}
           >
-            <Toolbar />
-            <Box sx={{ overflow: 'auto' }}>
+            <Toolbar/>
+            <Box sx={{overflow: 'auto'}}>
               <List>
-                {['Products'].map((text) => (
-                    <ListItem key={text} disablePadding>
+                {[{title: 'Products', route: 'products'}].map((route) => (
+                    <ListItem key={route.title} disablePadding>
                       <ListItemButton>
-                        <ListItemText primary={text} />
+                        <Link to={route.route} className="link">
+                          <ListItemText primary={route.title}/>
+                        </Link>
                       </ListItemButton>
                     </ListItem>
                 ))}
               </List>
             </Box>
           </Drawer>
-          <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-            <Toolbar />
+          <Box component="main" sx={{flexGrow: 1, p: 3}}>
+            <Toolbar/>
           </Box>
         </Box>
-  )
-    ;
+    )
+        ;
   }
 }
 
