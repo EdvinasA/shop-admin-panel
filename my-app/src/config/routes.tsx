@@ -1,7 +1,7 @@
 import ProductsComponent from "../components/ProductsComponent/ProductsComponent";
 import App from "../App";
 
-export default [
+let routes = [
   {
     path: "/",
     component: <App/>,
@@ -17,3 +17,4 @@ export default [
     children: []
   }
 ];
+export default routes;
