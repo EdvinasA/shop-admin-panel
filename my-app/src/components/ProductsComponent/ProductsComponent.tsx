@@ -1,13 +1,16 @@
 import React from 'react';
 import './ProductsComponent.scss';
-import {Page, Product} from "../../models/product";
-import {fetchProductsList} from "../../services/ProductService";
 import {DataGrid, GridColDef} from '@mui/x-data-grid';
 import {Box} from "@mui/material";
+import {Page} from "../../models/product";
 
 class ProductsComponent extends React.Component {
 
-  private products: Page = new Page();
+  state = {
+    products: {content: [], empty: false, first: false, last: false, number: 0, numberOfElements: 0, pageable: {offset: 0, pageNumber: 0, pageSize: 0, paged: false, sort: {empty: false, sorted: false, unsorted: false}, unpaged: false}, size: 0, sort: {empty: false, sorted: false, unsorted: false}, totalElements: 0, totalPages: 0},
+    loading: true,
+    error: false
+  }
 
   private columns: GridColDef[] = [
     {
@@ -50,31 +53,30 @@ class ProductsComponent extends React.Component {
 
   constructor(props: any) {
     super(props);
-    this.getData().then(r => r);
   }
 
-  componentDidMount() {
-    console.log(this.products);
-  }
-
-  async getData() {
-    fetchProductsList().then(data => {
-      if (data !== undefined) {
-        this.products = data.data;
-        console.log(this.products);
-      }
-    });
+  componentDidMount () {
+    fetch('http://localhost:8081/api/shop/product')
+    .then(response => response.json())
+    .then(response => this.setState({
+      products: response,
+      loading: false
+    }))
+    .catch(error => this.setState({
+      loading: false,
+      error: true
+    }));
   }
 
   render() {
     return (
         <Box sx={{height: 400, width: '100%'}}>
-          {this.products.content !== undefined &&
+          {this.state.products !== undefined &&
               <DataGrid
-                  rows={this.products.content}
+                  rows={this.state.products.content}
                   columns={this.columns}
-                  pageSize={this.products.size}
-                  rowsPerPageOptions={[this.products.size]}
+                  pageSize={this.state.products.content.length}
+                  rowsPerPageOptions={[this.state.products.size]}
                   checkboxSelection
                   disableSelectionOnClick
               />

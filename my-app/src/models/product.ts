@@ -10,31 +10,31 @@ export interface Product {
   subCategory: string;
 }
 
-export class Page {
-  content!: Product[];
-  pageable!: {
-    sort?: {
-      empty?: boolean;
-      sorted?: boolean;
-      unsorted?: boolean;
+export type Page = {
+  content: Product[];
+  pageable: {
+    sort: {
+      empty: boolean;
+      sorted: boolean;
+      unsorted: boolean;
     };
-    offset?: number;
-    pageNumber?: number;
-    pageSize?: number;
-    paged?: boolean;
-    unpaged?: boolean;
+    offset: number;
+    pageNumber: number;
+    pageSize: number;
+    paged: boolean;
+    unpaged: boolean;
   };
-  last!: boolean;
-  totalElements!: number;
-  totalPages!: number;
-  size!: number;
-  number!: number;
-  sort!: {
-    empty?: boolean;
-    sorted?: boolean;
-    unsorted?: boolean;
+  last: boolean;
+  totalElements: number;
+  totalPages: number;
+  size: number;
+  number: number;
+  sort: {
+    empty: boolean;
+    sorted: boolean;
+    unsorted: boolean;
   };
-  first!: boolean;
-  numberOfElements!: number;
-  empty!: boolean;
+  first: boolean;
+  numberOfElements: number;
+  empty: boolean;
 }
