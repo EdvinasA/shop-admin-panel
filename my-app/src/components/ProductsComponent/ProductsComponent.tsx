@@ -75,8 +75,8 @@ class ProductsComponent extends React.Component {
               <DataGrid
                   rows={this.state.products.content}
                   columns={this.columns}
-                  pageSize={this.state.products.content.length}
-                  rowsPerPageOptions={[this.state.products.size]}
+                  pageSize={5}
+                  rowsPerPageOptions={[5, 10, 15, 20]}
                   checkboxSelection
                   disableSelectionOnClick
               />
