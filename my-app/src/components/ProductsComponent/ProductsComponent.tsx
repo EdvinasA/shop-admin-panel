@@ -1,13 +1,12 @@
 import React from 'react';
 import './ProductsComponent.scss';
-import {DataGrid, GridColDef} from '@mui/x-data-grid';
-import {Box} from "@mui/material";
-import {Page} from "../../models/product";
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { Box } from "@mui/material";
 
 class ProductsComponent extends React.Component {
 
   state = {
-    products: {content: [], empty: false, first: false, last: false, number: 0, numberOfElements: 0, pageable: {offset: 0, pageNumber: 0, pageSize: 0, paged: false, sort: {empty: false, sorted: false, unsorted: false}, unpaged: false}, size: 0, sort: {empty: false, sorted: false, unsorted: false}, totalElements: 0, totalPages: 0},
+    products: { content: [], empty: false, first: false, last: false, number: 0, numberOfElements: 0, pageable: { offset: 0, pageNumber: 0, pageSize: 0, paged: false, sort: { empty: false, sorted: false, unsorted: false }, unpaged: false }, size: 0, sort: { empty: false, sorted: false, unsorted: false }, totalElements: 0, totalPages: 0 },
     loading: true,
     error: false
   }
@@ -51,37 +50,33 @@ class ProductsComponent extends React.Component {
     },
   ];
 
-  constructor(props: any) {
-    super(props);
-  }
-
-  componentDidMount () {
+  componentDidMount() {
     fetch('http://localhost:8081/api/shop/product')
-    .then(response => response.json())
-    .then(response => this.setState({
-      products: response,
-      loading: false
-    }))
-    .catch(error => this.setState({
-      loading: false,
-      error: true
-    }));
+      .then(response => response.json())
+      .then(response => this.setState({
+        products: response,
+        loading: false
+      }))
+      .catch(error => this.setState({
+        loading: false,
+        error: true
+      }));
   }
 
   render() {
     return (
-        <Box sx={{height: 400, width: '100%'}}>
-          {this.state.products !== undefined &&
-              <DataGrid
-                  rows={this.state.products.content}
-                  columns={this.columns}
-                  pageSize={5}
-                  rowsPerPageOptions={[5, 10, 15, 20]}
-                  checkboxSelection
-                  disableSelectionOnClick
-              />
-          }
-        </Box>
+      <Box sx={{ height: 400, width: '100%' }}>
+        {this.state.products !== undefined &&
+          <DataGrid
+            rows={this.state.products.content}
+            columns={this.columns}
+            pageSize={5}
+            rowsPerPageOptions={[5, 10, 15, 20]}
+            checkboxSelection
+            disableSelectionOnClick
+          />
+        }
+      </Box>
     );
   }
 }
