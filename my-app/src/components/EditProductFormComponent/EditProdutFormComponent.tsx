@@ -1,24 +1,28 @@
 import { TextField } from "@mui/material";
 import React from "react";
-import { Product, ProductProps } from "../../models/product";
+import { Product } from "../../models/product";
 import "../EditProductFormComponent/EditProductFormComponent.scss";
 
+export interface ProductProps {
+    product: Product;
+  }
 
 class EditProductFormComponent extends React.Component<ProductProps, Product> {
-    constructor(props: {}) {
+    constructor(props: ProductProps) {
         super(props)
+        const { product } = this.props;
         this.state = {
-            id: "",
-            name: "",
-            code: "",
-            picture: "",
-            price: 0,
-            quantity: 0,
-            type: "",
-            category: "",
-            subCategory: "",
-            stripeProductId: "",
-            stripePriceId: "",
+            id: product.id,
+            name: product.name,
+            code: product.code,
+            picture: product.picture,
+            price: product.price,
+            quantity: product.quantity,
+            type: product.type,
+            category: product.category,
+            subCategory: product.subCategory,
+            stripeProductId: product.stripeProductId,
+            stripePriceId: product.stripePriceId,
             errors: {
                 name: "",
                 code: "",
@@ -37,7 +41,7 @@ class EditProductFormComponent extends React.Component<ProductProps, Product> {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(event: { target: ProductProps; }) {
+    handleChange(event: { target: {name?: any, value?: any}; }) {
         const { name, value } = event.target;
         this.setState({ [name]: value } as unknown as Product);
     }

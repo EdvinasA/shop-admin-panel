@@ -16,7 +16,32 @@ class ProductsComponent extends React.Component {
         { empty: false, sorted: false, unsorted: false }, totalElements: 0, totalPages: 0
     },
     loading: true,
-    error: false
+    error: false,
+    product: {
+      id: "",
+      name: "",
+      code: "",
+      picture: "",
+      price: 0,
+      quantity: 0,
+      type: "",
+      category: "",
+      subCategory: "",
+      stripeProductId: "",
+      stripePriceId: "",
+      errors: {
+        name: "",
+        code: "",
+        picture: "",
+        price: "",
+        quantity: "",
+        type: "",
+        category: "",
+        subCategory: "",
+        stripeProductId: "",
+        stripePriceId: ""
+      }
+    }
   }
 
   private columns: GridColDef[] = [
@@ -84,7 +109,7 @@ class ProductsComponent extends React.Component {
             disableSelectionOnClick
           />
         }
-        <EditProductFormComponent></EditProductFormComponent>
+        <EditProductFormComponent product={this.state.product}></EditProductFormComponent>
       </Box>
     );
   }

@@ -1,8 +1,3 @@
-export interface ProductProps {
-  name?: any;
-  value?: any;
-}
-
 export interface Product {
   id: string;
   name: string;
