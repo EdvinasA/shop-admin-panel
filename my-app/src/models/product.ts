@@ -8,6 +8,8 @@ export interface Product {
   type: string;
   category: string;
   subCategory: string;
+  stripeProductId: string;
+  stripePriceId: string;
 }
 
 export type Page = {

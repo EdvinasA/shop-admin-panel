@@ -1,9 +1,8 @@
 import React from 'react';
 import './App.scss';
 import SidePanelComponent from "./components/SidePanelComponent/SidePanelComponent";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import routes from "./config/routes";
-import ProductsComponent from "./components/ProductsComponent/ProductsComponent";
+import {BrowserRouter} from "react-router-dom";
+import EditProductFormComponent from './components/EditProductFormComponent/EditProdutFormComponent';
 
 class App extends React.Component {
   // private routes: [] = routes;
@@ -12,6 +11,7 @@ class App extends React.Component {
         <BrowserRouter>
           <div className="App">
             <SidePanelComponent></SidePanelComponent>
+            <EditProductFormComponent></EditProductFormComponent>
           </div>
         </BrowserRouter>
     );
