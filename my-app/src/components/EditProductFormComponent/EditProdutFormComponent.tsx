@@ -5,7 +5,7 @@ import "../EditProductFormComponent/EditProductFormComponent.scss";
 
 export interface ProductProps {
     product: Product;
-  }
+}
 
 class EditProductFormComponent extends React.Component<ProductProps, Product> {
     constructor(props: ProductProps) {
@@ -41,7 +41,7 @@ class EditProductFormComponent extends React.Component<ProductProps, Product> {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(event: { target: {name?: any, value?: any}; }) {
+    handleChange(event: { target: { name?: any, value?: any }; }) {
         const { name, value } = event.target;
         this.setState({ [name]: value } as unknown as Product);
     }
@@ -71,10 +71,10 @@ class EditProductFormComponent extends React.Component<ProductProps, Product> {
                             <TextField name="code" label="Code" variant="outlined" value={this.state.code} onChange={this.handleChange} />
                         </div>
                         <div className="edit-product-form-input">
-                            <TextField name="price" type="number" label="Price" variant="outlined" value={this.state.price} onChange={this.handleChange}  />
+                            <TextField name="price" type="number" label="Price" variant="outlined" value={this.state.price} onChange={this.handleChange} />
                         </div>
                         <div className="edit-product-form-input">
-                            <TextField name="quantity" type="number" label="Quantity" variant="outlined" value={this.state.quantity} onChange={this.handleChange}  />
+                            <TextField name="quantity" type="number" label="Quantity" variant="outlined" value={this.state.quantity} onChange={this.handleChange} />
                         </div>
                         <div className="edit-product-form-input">
                             <TextField name="type" label="Type" variant="outlined" value={this.state.type} onChange={this.handleChange} />
