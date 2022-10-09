@@ -21,8 +21,8 @@ export interface Product {
     name: string;
     picture: string;
     code: string;
-    price: number;
-    quantity: number;
+    price: string;
+    quantity: string;
     type: string;
     category: string;
     subCategory: string;

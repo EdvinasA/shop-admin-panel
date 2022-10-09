@@ -23,8 +23,8 @@ class EditProductFormComponent extends React.Component<ProductProps, Product> {
                 name: "",
                 code: "",
                 picture: "",
-                price: 0,
-                quantity: 0,
+                price: "",
+                quantity: "",
                 type: "",
                 category: "",
                 subCategory: "",
@@ -40,13 +40,16 @@ class EditProductFormComponent extends React.Component<ProductProps, Product> {
     handleChange(event: { target: ProductProps; }) {
         const { name, value } = event.target;
         this.setState({ [name]: value } as unknown as Product);
-        console.log(this.state);
     }
 
     handleSubmit(event: any) {
-        alert('A name was submitted: ' + this.state.name);
         event.preventDefault();
-        console.log(this.state);
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(this.state)
+        };
+        fetch("http://localhost:8081/api/shop/product", requestOptions);
     }
 
     render() {
@@ -84,8 +87,8 @@ class EditProductFormComponent extends React.Component<ProductProps, Product> {
                         <div className="edit-product-form-input">
                             <TextField name="stripePriceId" label="Stripe Price Id" variant="outlined" value={this.state.stripePriceId} onChange={this.handleChange} />
                         </div>
-                        {/* <button type="submit">Submit</button> */}
                     </div>
+                    <button type="submit">Submit</button>
                 </form>
             </div>
         );
