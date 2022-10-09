@@ -1,63 +1,90 @@
 import { TextField } from "@mui/material";
 import React from "react";
+import { Product, ProductProps } from "../../models/product";
+import "../EditProductFormComponent/EditProductFormComponent.scss";
 
 
-class EditProductFormComponent extends React.Component<{}, {name: string}> {
+class EditProductFormComponent extends React.Component<ProductProps, Product> {
     constructor(props: {}) {
         super(props)
         this.state = {
-            name: ""
+            id: "",
+            name: "",
+            code: "",
+            picture: "",
+            price: 0,
+            quantity: 0,
+            type: "",
+            category: "",
+            subCategory: "",
+            stripeProductId: "",
+            stripePriceId: "",
+            errors: {
+                name: "",
+                code: "",
+                picture: "",
+                price: 0,
+                quantity: 0,
+                type: "",
+                category: "",
+                subCategory: "",
+                stripeProductId: "",
+                stripePriceId: ""
+            }
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(event: { target: { value: string; }; }) {
-        this.setState({ name: event.target.value }); 
-       }
+    handleChange(event: { target: ProductProps; }) {
+        const { name, value } = event.target;
+        this.setState({ [name]: value } as unknown as Product);
+        console.log(this.state);
+    }
 
-   handleSubmit(event: any) {
-       alert('A name was submitted: ' + this.state.name);
-       event.preventDefault();
-   }
+    handleSubmit(event: any) {
+        alert('A name was submitted: ' + this.state.name);
+        event.preventDefault();
+        console.log(this.state);
+    }
 
     render() {
         return (
             <div className="edit-product-form">
                 <form onSubmit={this.handleSubmit}>
-                    <div>
-                        <div>
-                            <TextField label="Name" variant="outlined" value={this.state.name} onChange={this.handleChange}/>
+                    <div className="edit-product-form-wrapper">
+                        <div className="edit-product-form-input">
+                            <TextField name="name" label="Name" variant="outlined" value={this.state.name} onChange={this.handleChange} />
                         </div>
-                        <div>
-                            <TextField label="Picture" variant="outlined" />
+                        <div className="edit-product-form-input">
+                            <TextField name="picture" label="Picture" variant="outlined" value={this.state.picture} onChange={this.handleChange} />
                         </div>
-                        <div>
-                            <TextField label="Code" variant="outlined" />
+                        <div className="edit-product-form-input">
+                            <TextField name="code" label="Code" variant="outlined" value={this.state.code} onChange={this.handleChange} />
                         </div>
-                        <div>
-                            <TextField label="Price" variant="outlined" />
+                        <div className="edit-product-form-input">
+                            <TextField name="price" type="number" label="Price" variant="outlined" value={this.state.price} onChange={this.handleChange}  />
                         </div>
-                        <div>
-                            <TextField label="Quantity" variant="outlined" />
+                        <div className="edit-product-form-input">
+                            <TextField name="quantity" type="number" label="Quantity" variant="outlined" value={this.state.quantity} onChange={this.handleChange}  />
                         </div>
-                        <div>
-                            <TextField label="Type" variant="outlined" />
+                        <div className="edit-product-form-input">
+                            <TextField name="type" label="Type" variant="outlined" value={this.state.type} onChange={this.handleChange} />
                         </div>
-                        <div>
-                            <TextField label="Category" variant="outlined" />
+                        <div className="edit-product-form-input">
+                            <TextField name="category" label="Category" variant="outlined" value={this.state.category} onChange={this.handleChange} />
                         </div>
-                        <div>
-                            <TextField label="Sub Category" variant="outlined" />
+                        <div className="edit-product-form-input">
+                            <TextField name="subCategory" label="Sub Category" variant="outlined" value={this.state.subCategory} onChange={this.handleChange} />
                         </div>
-                        <div>
-                            <TextField label="Stripe Product Id" variant="outlined" />
+                        <div className="edit-product-form-input">
+                            <TextField name="stripeProductId" label="Stripe Product Id" variant="outlined" value={this.state.stripeProductId} onChange={this.handleChange} />
                         </div>
-                        <div>
-                            <TextField label="Stripe Price Id" variant="outlined" />
+                        <div className="edit-product-form-input">
+                            <TextField name="stripePriceId" label="Stripe Price Id" variant="outlined" value={this.state.stripePriceId} onChange={this.handleChange} />
                         </div>
-                        <button type="submit">Submit</button>
+                        {/* <button type="submit">Submit</button> */}
                     </div>
                 </form>
             </div>

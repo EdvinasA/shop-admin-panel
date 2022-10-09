@@ -1,0 +1,8 @@
+.edit-product-form-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.edit-product-form-input {
+    padding-top: 15px;
+}

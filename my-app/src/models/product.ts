@@ -1,3 +1,10 @@
+import React from "react";
+
+export interface ProductProps {
+  name?: any;
+  value?: any;
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -10,6 +17,18 @@ export interface Product {
   subCategory: string;
   stripeProductId: string;
   stripePriceId: string;
+  errors: {
+    name: string;
+    picture: string;
+    code: string;
+    price: number;
+    quantity: number;
+    type: string;
+    category: string;
+    subCategory: string;
+    stripeProductId: string;
+    stripePriceId: string;
+  }
 }
 
 export type Page = {
