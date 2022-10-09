@@ -2,11 +2,19 @@ import React from 'react';
 import './ProductsComponent.scss';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { Box } from "@mui/material";
+import EditProductFormComponent from '../EditProductFormComponent/EditProdutFormComponent';
 
 class ProductsComponent extends React.Component {
 
   state = {
-    products: { content: [], empty: false, first: false, last: false, number: 0, numberOfElements: 0, pageable: { offset: 0, pageNumber: 0, pageSize: 0, paged: false, sort: { empty: false, sorted: false, unsorted: false }, unpaged: false }, size: 0, sort: { empty: false, sorted: false, unsorted: false }, totalElements: 0, totalPages: 0 },
+    products: {
+      content: [], empty: false, first: false, last: false, number: 0, numberOfElements: 0, pageable:
+      {
+        offset: 0, pageNumber: 0, pageSize: 0, paged: false, sort:
+          { empty: false, sorted: false, unsorted: false }, unpaged: false
+      }, size: 0, sort:
+        { empty: false, sorted: false, unsorted: false }, totalElements: 0, totalPages: 0
+    },
     loading: true,
     error: false
   }
@@ -76,6 +84,7 @@ class ProductsComponent extends React.Component {
             disableSelectionOnClick
           />
         }
+        <EditProductFormComponent></EditProductFormComponent>
       </Box>
     );
   }
