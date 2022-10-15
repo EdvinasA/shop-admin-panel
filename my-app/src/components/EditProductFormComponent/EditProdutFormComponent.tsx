@@ -52,7 +52,7 @@ class EditProductFormComponent extends React.Component<ProductProps, Product> {
     handleSubmit(event: any) {
         event.preventDefault();
         const requestOptions = {
-            method: 'POST',
+            method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(this.props.product)
         };
