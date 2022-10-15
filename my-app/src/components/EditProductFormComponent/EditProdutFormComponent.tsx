@@ -1,6 +1,5 @@
 import { TextField } from "@mui/material";
 import React from "react";
-import { Form } from "react-router-dom";
 import { Product } from "../../models/product";
 import "../EditProductFormComponent/EditProductFormComponent.scss";
 
