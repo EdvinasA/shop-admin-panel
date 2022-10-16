@@ -5,17 +5,22 @@ import "../EditProductFormComponent/EditProductFormComponent.scss";
 
 export interface ProductProps {
     product: Product;
+    formState: boolean;
+    handleFormState: (value: boolean) => void;
 }
 
 class EditProductFormComponent extends React.Component<ProductProps, Product> {
     constructor(props: ProductProps) {
         super(props)
         this.state = this.props.product;
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleFormState = this.handleFormState.bind(this);
     }
 
     componentDidMount(): void {
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        
     }
 
     componentDidUpdate(prevProps: Readonly<ProductProps>, prevState: Readonly<Product>, snapshot?: any): void {
@@ -39,6 +44,11 @@ class EditProductFormComponent extends React.Component<ProductProps, Product> {
         fetch("http://localhost:8081/api/shop/product", requestOptions);
     }
 
+    handleFormState(event: any) {
+        event.preventDefault();
+        this.props.handleFormState(false);
+    }
+
     render() {
         return (
             <div className="edit-product-form">
@@ -52,8 +62,8 @@ class EditProductFormComponent extends React.Component<ProductProps, Product> {
                         </div>
                         <div className="edit-product-form-input1">
                             <TextField name="code" label="Code" variant="outlined" value={this.state.code || ''} onChange={this.handleChange} />
-                            <TextField name="price" type="number" label="Price" variant="outlined" value={this.state.price || ''} onChange={this.handleChange} />
-                            <TextField name="quantity" type="number" label="Quantity" variant="outlined" value={this.state.quantity || ''} onChange={this.handleChange} />
+                            <TextField name="price" label="Price" variant="outlined" value={this.state.price || ''} onChange={this.handleChange} />
+                            <TextField name="quantity" label="Quantity" variant="outlined" value={this.state.quantity || ''} onChange={this.handleChange} />
                         </div>
                         <div className="edit-product-form-input2">
                             <TextField name="type" label="Type" variant="outlined" value={this.state.type || ''} onChange={this.handleChange} />
@@ -67,8 +77,9 @@ class EditProductFormComponent extends React.Component<ProductProps, Product> {
                             <TextField name="stripePriceId" label="Stripe Price Id" variant="outlined" value={this.state.stripePriceId || ''} onChange={this.handleChange} />
                         </div>
                     </div>
-                    <button type="submit">Submit</button>
+                    <button type="submit" className="submit-button">Submit</button>
                 </form>
+                <button onClick={this.handleFormState}>Cancel</button>
             </div>
         );
     }

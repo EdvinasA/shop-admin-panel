@@ -27,6 +27,7 @@ class ProductsComponent extends React.Component {
     },
     loading: true,
     error: false,
+    formState: false,
     product: {
       id: "",
       name: "",
@@ -73,8 +74,13 @@ class ProductsComponent extends React.Component {
 
   editProduct(editableProduct: Product) {
     this.setState({
-      product: editableProduct
+      product: editableProduct,
+      formState: true
     });
+  }
+
+  handleFormState = (value: boolean) => {
+    this.setState( {formState: value} )
   }
 
   render() {
@@ -91,9 +97,13 @@ class ProductsComponent extends React.Component {
               </div>
             ))}
         </div>
-        <EditProductFormComponent
-          product={this.state.product}
-        ></EditProductFormComponent>
+        {this.state.formState &&
+          <EditProductFormComponent
+            product={this.state.product}
+            formState={this.state.formState}
+            handleFormState={this.handleFormState}
+          ></EditProductFormComponent>
+        }
       </div>
     );
   }
