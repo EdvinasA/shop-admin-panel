@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import React from "react";
 import { Product } from "../../models/product";
 import "../EditProductFormComponent/EditProductFormComponent.scss";
@@ -74,8 +74,8 @@ class EditProductFormComponent extends React.Component<ProductProps, Product> {
                             <TextField name="stripePriceId" label="Stripe Price Id" variant="outlined" value={this.state.stripePriceId || ''} onChange={this.handleChange} />
                         </div>
                     </div>
-                    <button type="submit" className="submit-button">Submit</button>
-                    <button onClick={this.handleFormState}>Cancel</button>
+                    <Button variant="contained" type="submit" className="submit-button">Submit</Button>
+                    <Button variant="contained" color="error" onClick={this.handleFormState}>Cancel</Button>
                 </form>
             </div>
         );

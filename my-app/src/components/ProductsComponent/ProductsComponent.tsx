@@ -2,6 +2,7 @@ import React from "react";
 import "./ProductsComponent.scss";
 import { Product } from "../../models/product";
 import EditProductFormComponent from "../EditProductFormComponent/EditProdutFormComponent";
+import { Button } from "@mui/material";
 
 class ProductsComponent extends React.Component {
   state = {
@@ -100,7 +101,7 @@ class ProductsComponent extends React.Component {
               <div key={product.id}>
                 <div>{product.name}</div>
                 <div>
-                  <button onClick={() => this.editProduct(product)}>Edit</button>
+                  <Button variant="contained" onClick={() => this.editProduct(product)}>Edit</Button>
                 </div>
               </div>
             ))}

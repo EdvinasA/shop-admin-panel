@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap');
+
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -19,6 +21,7 @@ button, input[type="submit"], input[type="reset"] {
 }
 
 .edit-product-form-wrapper {
+    font-family: Roboto;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
 }
@@ -48,8 +51,4 @@ button, input[type="submit"], input[type="reset"] {
 
 .edit-product-form-input4 {
     grid-template-columns: repeat(2, 1fr);
-}
-
-.submit-button {
-    background-color: red;
 }
