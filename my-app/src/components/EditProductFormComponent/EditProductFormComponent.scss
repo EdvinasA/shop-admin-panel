@@ -1,8 +1,41 @@
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
 .edit-product-form-wrapper {
     display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.edit-product-form-input,
+.edit-product-form-input1,
+.edit-product-form-input2,
+.edit-product-form-input3,
+.edit-product-form-input4 {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 30px;
+    padding-top: 15px;
+}
+
+.edit-product-form-input1 {
     grid-template-columns: repeat(3, 1fr);
 }
 
-.edit-product-form-input {
-    padding-top: 15px;
+.edit-product-form-input2 {
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.edit-product-form-input3 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.edit-product-form-input4 {
+    grid-template-columns: repeat(2, 1fr);
 }

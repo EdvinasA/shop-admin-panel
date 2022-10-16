@@ -81,7 +81,6 @@ class EditProductFormComponent extends React.Component<ProductProps, Product> {
         if (this.props.product.id !== prevState.id) {
             this.setState(this.props.product);
         }
-
     }
 
     handleChange(event: { target: { name?: any, value?: any }; }) {
@@ -94,7 +93,7 @@ class EditProductFormComponent extends React.Component<ProductProps, Product> {
         const requestOptions = {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(this.props.product)
+            body: JSON.stringify(this.state)
         };
         fetch("http://localhost:8081/api/shop/product", requestOptions);
     }
@@ -110,28 +109,20 @@ class EditProductFormComponent extends React.Component<ProductProps, Product> {
                         <div className="edit-product-form-input">
                             <TextField name="picture" label="Picture" variant="outlined" value={this.state.picture || ''} onChange={this.handleChange} />
                         </div>
-                        <div className="edit-product-form-input">
+                        <div className="edit-product-form-input1">
                             <TextField name="code" label="Code" variant="outlined" value={this.state.code || ''} onChange={this.handleChange} />
-                        </div>
-                        <div className="edit-product-form-input">
                             <TextField name="price" type="number" label="Price" variant="outlined" value={this.state.price || ''} onChange={this.handleChange} />
-                        </div>
-                        <div className="edit-product-form-input">
                             <TextField name="quantity" type="number" label="Quantity" variant="outlined" value={this.state.quantity || ''} onChange={this.handleChange} />
                         </div>
-                        <div className="edit-product-form-input">
+                        <div className="edit-product-form-input2">
                             <TextField name="type" label="Type" variant="outlined" value={this.state.type || ''} onChange={this.handleChange} />
                         </div>
-                        <div className="edit-product-form-input">
+                        <div className="edit-product-form-input3">
                             <TextField name="category" label="Category" variant="outlined" value={this.state.category || ''} onChange={this.handleChange} />
-                        </div>
-                        <div className="edit-product-form-input">
                             <TextField name="subCategory" label="Sub Category" variant="outlined" value={this.state.subCategory || ''} onChange={this.handleChange} />
                         </div>
-                        <div className="edit-product-form-input">
+                        <div className="edit-product-form-input4">
                             <TextField name="stripeProductId" label="Stripe Product Id" variant="outlined" value={this.state.stripeProductId || ''} onChange={this.handleChange} />
-                        </div>
-                        <div className="edit-product-form-input">
                             <TextField name="stripePriceId" label="Stripe Price Id" variant="outlined" value={this.state.stripePriceId || ''} onChange={this.handleChange} />
                         </div>
                     </div>
