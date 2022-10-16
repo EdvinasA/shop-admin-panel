@@ -13,14 +13,12 @@ class EditProductFormComponent extends React.Component<ProductProps, Product> {
     constructor(props: ProductProps) {
         super(props)
         this.state = this.props.product;
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleFormState = this.handleFormState.bind(this);
     }
 
     componentDidMount(): void {
-        
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleFormState = this.handleFormState.bind(this);
     }
 
     componentDidUpdate(prevProps: Readonly<ProductProps>, prevState: Readonly<Product>, snapshot?: any): void {
@@ -78,8 +76,8 @@ class EditProductFormComponent extends React.Component<ProductProps, Product> {
                         </div>
                     </div>
                     <button type="submit" className="submit-button">Submit</button>
+                    <button onClick={this.handleFormState}>Cancel</button>
                 </form>
-                <button onClick={this.handleFormState}>Cancel</button>
             </div>
         );
     }

@@ -17,11 +17,19 @@ class ProductsComponent extends React.Component {
         pageNumber: 0,
         pageSize: 0,
         paged: false,
-        sort: { empty: false, sorted: false, unsorted: false },
+        sort: {
+          empty: false,
+          sorted: false,
+          unsorted: false
+        },
         unpaged: false,
       },
       size: 0,
-      sort: { empty: false, sorted: false, unsorted: false },
+      sort: {
+        empty: false,
+        sorted: false,
+        unsorted: false
+      },
       totalElements: 0,
       totalPages: 0,
     },
@@ -80,7 +88,7 @@ class ProductsComponent extends React.Component {
   }
 
   handleFormState = (value: boolean) => {
-    this.setState( {formState: value} )
+    this.setState({ formState: value })
   }
 
   render() {
