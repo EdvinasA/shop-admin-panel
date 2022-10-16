@@ -108,7 +108,6 @@ class ProductsComponent extends React.Component {
         {this.state.formState &&
           <EditProductFormComponent
             product={this.state.product}
-            formState={this.state.formState}
             handleFormState={this.handleFormState}
           ></EditProductFormComponent>
         }

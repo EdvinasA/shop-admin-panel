@@ -5,7 +5,6 @@ import "../EditProductFormComponent/EditProductFormComponent.scss";
 
 export interface ProductProps {
     product: Product;
-    formState: boolean;
     handleFormState: (value: boolean) => void;
 }
 
