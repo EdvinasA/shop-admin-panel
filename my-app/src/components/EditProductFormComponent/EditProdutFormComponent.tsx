@@ -1,4 +1,4 @@
-import { Button, TextField } from "@mui/material";
+import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 import React from "react";
 import { Product } from "../../models/product";
 import "../EditProductFormComponent/EditProductFormComponent.scss";
@@ -64,8 +64,32 @@ class EditProductFormComponent extends React.Component<ProductProps, Product> {
                             <TextField name="type" label="Type" variant="outlined" value={this.state.type || ''} onChange={this.handleChange} />
                         </div>
                         <div className="edit-product-form-input3">
-                            <TextField name="category" label="Category" variant="outlined" value={this.state.category || ''} onChange={this.handleChange} />
-                            <TextField name="subCategory" label="Sub Category" variant="outlined" value={this.state.subCategory || ''} onChange={this.handleChange} />
+                            <FormControl fullWidth>
+                                <InputLabel id="demo-simple-select-label">Category</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={this.state.category}
+                                    name="category"
+                                    label="Category"
+                                    onChange={this.handleChange}
+                                >
+                                    <MenuItem value={"COMPUTER_EQUIPMENT_OFFICE_SUPPLIES"}>Computer equipment office supplies</MenuItem>
+                                </Select>
+                            </FormControl>
+                            <FormControl fullWidth>
+                                <InputLabel id="demo-simple-select-label">Sub Category</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={this.state.subCategory}
+                                    name="subCategory"
+                                    label="Sub Category"
+                                    onChange={this.handleChange}
+                                >
+                                    <MenuItem value={"LAPTOPS_AND_THEIR_ACCESSORIES"}>Laptops and their accessories</MenuItem>
+                                </Select>
+                            </FormControl>
                         </div>
                         <div className="edit-product-form-input4">
                             <TextField name="stripeProductId" label="Stripe Product Id" variant="outlined" value={this.state.stripeProductId || ''} onChange={this.handleChange} />
