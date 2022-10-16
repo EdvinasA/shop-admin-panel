@@ -75,7 +75,6 @@ class ProductsComponent extends React.Component {
     this.setState({
       product: editableProduct
     });
-    console.log(this.state.product);
   }
 
   render() {
