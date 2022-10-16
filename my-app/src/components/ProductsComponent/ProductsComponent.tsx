@@ -2,7 +2,7 @@ import React from "react";
 import "./ProductsComponent.scss";
 import { Product } from "../../models/product";
 import EditProductFormComponent from "../EditProductFormComponent/EditProdutFormComponent";
-import { Button } from "@mui/material";
+import { Button, Divider } from "@mui/material";
 
 class ProductsComponent extends React.Component {
   state = {
@@ -98,7 +98,7 @@ class ProductsComponent extends React.Component {
         <div className="list-of-products">
           {this.state.products &&
             this.state.products.content.map((product: Product) => (
-              <div key={product.id}>
+              <div className="produt-display" key={product.id}>
                 <div>{product.name}</div>
                 <div>
                   <Button variant="contained" onClick={() => this.editProduct(product)}>Edit</Button>
@@ -107,10 +107,13 @@ class ProductsComponent extends React.Component {
             ))}
         </div>
         {this.state.formState &&
-          <EditProductFormComponent
-            product={this.state.product}
-            handleFormState={this.handleFormState}
-          ></EditProductFormComponent>
+          <div className="edit-form-display">
+            <Divider />
+            <EditProductFormComponent
+              product={this.state.product}
+              handleFormState={this.handleFormState}
+            ></EditProductFormComponent>
+          </div>
         }
       </div>
     );

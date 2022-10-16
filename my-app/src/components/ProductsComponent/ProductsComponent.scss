@@ -1,6 +1,15 @@
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1300px;
   padding: 0 1em;
   margin: 0 auto;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding-bottom: 15px;
+}
+
+.produt-display {
+  display: grid;
+  padding-top: 15px;
+  grid-template-columns: repeat(2, 1fr);
+  max-height: 50px;
 }

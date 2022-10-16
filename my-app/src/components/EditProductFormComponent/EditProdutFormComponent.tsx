@@ -12,9 +12,7 @@ class EditProductFormComponent extends React.Component<ProductProps, Product> {
     constructor(props: ProductProps) {
         super(props)
         this.state = this.props.product;
-    }
 
-    componentDidMount(): void {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFormState = this.handleFormState.bind(this);
@@ -74,8 +72,10 @@ class EditProductFormComponent extends React.Component<ProductProps, Product> {
                             <TextField name="stripePriceId" label="Stripe Price Id" variant="outlined" value={this.state.stripePriceId || ''} onChange={this.handleChange} />
                         </div>
                     </div>
-                    <Button variant="contained" type="submit" className="submit-button">Submit</Button>
-                    <Button variant="contained" color="error" onClick={this.handleFormState}>Cancel</Button>
+                    <div className="form-buttons">
+                        <Button variant="contained" type="submit">Submit</Button>
+                        <Button variant="contained" color="error" onClick={this.handleFormState}>Cancel</Button>
+                    </div>
                 </form>
             </div>
         );
